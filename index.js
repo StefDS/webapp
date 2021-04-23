@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -40,19 +39,21 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'css')));
 
 app.get('/', function (req, res) {
+    res.write("   Node Address: " + myip.address() + "<br>");
+    res.end();
     res.writeFile('index.html');
 });
 
 app.get('/test', function (req, res) {
     res.writeHead(200, {"Content-Type": "text/html"});
-    res.write("<html><body><h1>Sample Web App</h1>");
-    res.write("<h3> New Tech In Action - Summer 2021 edition</h3>");
-    //  res.write("<img src='./images/logo.jpg'><br>");
+    res.write("<html><body><img src='/images/logo.jpg' width='325' height='150'>");
+        res.write("<h3> New Tech In Action - Summer 2021 edition</h3>");
     res.write("      Node Name: " + vhost +  "<br>");
     res.write("   Node Address: " + myip.address() + "<br>");
     res.write("        Counter: " + vcounter + "<br>");
     res.write("    Time is now: " + Date().toString()+ "</body></html>");
     res.end();
+    vcounter =  mycounter.getcounter(vhost);
   });
 
 app.post('/submit', function (req, res) {
@@ -63,13 +64,13 @@ app.post('/submit', function (req, res) {
     }
     else if (name === "kill bill") {
         res.writeHead(200, {"Content-Type": "text/html"});
-        res.write("*** Kill Bill was here and KILLED the webserver =:-) ***<br>");
+        res.write("*** Bill was here and KILLED this webserver ***<br>");
         res.end(); 
         console.log("*** webserver stopped ***");
         process.exit();    
     }
     else {
-        res.write("<html><body><h1>" + name + " has been submitted</h1></body></html>");
+        res.write("<html><body><h2>" + name + " has been submitted</h2></body></html>");
     }
     res.end();
 });
