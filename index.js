@@ -47,7 +47,7 @@ app.get('/', function (req, res) {
 app.get('/test', function (req, res) {
     res.writeHead(200, {"Content-Type": "text/html"});
     res.write("<html><body><img src='/images/logo.jpg' width='325' height='150'>");
-        res.write("<h3> New Tech In Action - Summer 2021 edition</h3>");
+    res.write("<h3> New Tech In Action - Summer 2021 edition</h3>");
     res.write("      Node Name: " + vhost +  "<br>");
     res.write("   Node Address: " + myip.address() + "<br>");
     res.write("        Counter: " + vcounter + "<br>");
