@@ -70,7 +70,10 @@ app.post('/submit', function (req, res) {
         process.exit();    
     }
     else {
+        res.writeHead(200, {"Content-Type": "text/html"});    
         res.write("<html><body><h2>" + name + " has been submitted</h2></body></html>");
+        res.write("<a href='javascript:history.back()'>Back</a>");
+        res.end();
     }
     res.end();
 });
