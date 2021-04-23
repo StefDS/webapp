@@ -1,0 +1,38 @@
+---
+apiVersion: kubedirector.hpe.com/v1beta1
+kind: KubeDirectorApp
+metadata:
+  name: webapp-kubedir
+spec:
+  systemdRequired: true
+  defaultPersistDirs:
+  - "/usr/src/app/data"
+  defaultEventList:
+  - configure
+  - addnodes
+  - delnodes
+  config:
+    roleServices:
+    - serviceIDs:
+      - http
+      roleID: webapp-kubedir
+    selectedRoles:
+    - webapp-kubedir
+  label:
+    name: webapp-kubedir
+    description: StefDS Statefull application example  
+  defaultImageRepoTag: docker.io/stefds/webapp:latest
+  defaultConfigPackage: 
+  distroID: stefds/webapp
+  version: 'latest'
+  configSchemaVersion: 7
+  services:
+  - endpoint:
+      port: 3000
+      isDashboard: false
+    id: http
+    label:
+      name: HTTP
+  roles:
+  - cardinality: 1+
+    id: webapp-kubedir
