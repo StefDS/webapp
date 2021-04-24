@@ -79,4 +79,4 @@ app.post('/submit', function (req, res) {
 });
 
 app.listen(3000);
-console.log('Webserver started. Listening on port 3000');
+console.log('WebApp server started. Listening on port 3000');
