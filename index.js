@@ -8,9 +8,10 @@ var app = express();
 var myip = require('ip');
 var myos = require('os');
 
-var mycounter = require("./public/js/appmodules.js");
+var myCounter = require("./public/js/appmodules.js");
+var myRecord = require("./public/js/appmodules.js");
 var vhost = myos.hostname;
-var vcounter =  mycounter.getcounter(vhost);
+var vCounter =  myCounter.getcounter(vhost);
 
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -50,10 +51,10 @@ app.get('/test', function (req, res) {
     res.write("<h3> New Tech In Action - Summer 2021 edition</h3>");
     res.write("      Node Name: " + vhost +  "<br>");
     res.write("   Node Address: " + myip.address() + "<br>");
-    res.write("        Counter: " + vcounter + "<br>");
+    res.write("        Counter: " + vCounter + "<br>");
     res.write("    Time is now: " + Date().toString()+ "</body></html>");
     res.end();
-    vcounter =  mycounter.getcounter(vhost);
+    vCounter =  myCounter.getcounter(vhost);
   });
 
 app.post('/submit', function (req, res) {
@@ -74,6 +75,8 @@ app.post('/submit', function (req, res) {
         res.write("<html><body><h2>" + name + " has been submitted</h2></body></html>");
         res.write("<a href='javascript:history.back()'>Back</a>");
         res.end();
+        myRecord.addRecord(name);
+        
     }
     res.end();
 });

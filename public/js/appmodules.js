@@ -33,3 +33,13 @@ exports.getcounter = function (thisHostname) {
     });
     return thisCounter;
 };
+
+exports.addRecord = function (name) {
+    var fs = require('fs');
+    const data = fs.readFileSync('./private/records.json', 'utf8');
+    var JSONdata = JSON.parse(data);
+    /// reading File
+    var thisCounter = JSONdata.pointer;
+    thisCounter += 1;
+    console.log(name + " - " + thisCounter )
+}
