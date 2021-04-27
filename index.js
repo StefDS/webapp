@@ -25,7 +25,7 @@ const logger = createLogger({
         )
       }),
       new transports.Stream({
-        stream: fs.createWriteStream('./private/webapp.log')
+        stream: fs.createWriteStream('./private/webapp.log', {flags: 'a'}) // appendinf to log file
       })
     ]
   })
