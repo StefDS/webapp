@@ -1,40 +1,38 @@
 /**
  * Module dependencies.
  */
-var express = require('express');
-var path = require('path');
-var app = express();
+const express = require('express');
+const app = express();
+const path = require('path');
 const fs = require('fs');
-
+const myip = require('ip');
+const myos = require('os');
+const vHost = myos.hostname();
+const vIp = myip.address();
+const appModules = require("./private/js/appmodules.js");
+const log = require('winston');
 /*
     Create log file handle with two tranports: Console, and File
 */
-var log = require('winston');
 const { createLogger, format, transports } = log;
 const logger = createLogger({
-    format: format.combine(
+   format: format.combine(
       format.timestamp(),
       format.simple()
-    ),
-    transports: [
+   ),
+   transports: [
       new transports.Console({
-        format: format.combine(
-          format.timestamp(),
-          format.colorize(),
-          format.simple()
-        )
+         format: format.combine(
+            format.timestamp(),
+            format.colorize(),
+            format.simple()
+         )
       }),
       new transports.Stream({
-        stream: fs.createWriteStream('./private/webapp.log', {flags: 'a'}) // appendinf to log file
+         stream: fs.createWriteStream('./private/webapp.log', { flags: 'a' }) // 'a' = append to log file
       })
-    ]
-  })
-var myip = require('ip');
-var myos = require('os');
-var vHost = myos.hostname();
-var vIp = myip.address();
-
-var appModules = require("./private/js/appmodules.js");
+   ]
+})
 
 // Using the Express web app framework
 app.use(express.urlencoded({ extended: false }));
@@ -63,46 +61,45 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'css')));
 
 app.get('/', function (req, res) {
-    res.write("   Node Address: " + myip.address() + "<br>");
-    res.end();
-    res.writeFile('index.html');
+   res.write("   Node Address: " + myip.address() + "<br>");
+   res.end();
+   res.writeFile('index.html');
 });
 
 app.get('/test', function (req, res) {
-    vCounter =  appModules.getcounter(vHost);
-    res.writeHead(200, {"Content-Type": "text/html"});
-    res.write("<html><body><img src='/images/logo.jpg' width='325' height='150'>");
-    res.write("<h3> New Tech In Action - Summer 2021 edition</h3>");
-    res.write("      Node Name: " + vHost +  "<br>");
-    res.write("   Node Address: " + vIp + "<br>");
-    res.write("        Counter: " + vCounter + "<br>");
-    res.write("    Time is now: " + Date().toString()+ "</body></html>");
-    res.end();
-  });
+   vCounter = appModules.getcounter(vHost);
+   res.writeHead(200, { "Content-Type": "text/html" });
+   res.write("<html><body><img src='/images/logo.jpg' width='325' height='150'>");
+   res.write("<h3>Tech In Action - Summer 2021 edition</h3>");
+   res.write("      Node Name: " + vHost + "<br>");
+   res.write("   Node Address: " + vIp + "<br>");
+   res.write("        Counter: " + vCounter + "<br>");
+   res.write("    Time is now: " + Date().toString() + "</body></html>");
+   res.end();
+});
 
 app.post('/submit', function (req, res) {
-//    console.log("*** Submitting ***")
-    var name = req.body.firstName + ' ' + req.body.lastName;
-    if (name === " ") {
-        res.write("<html><body><h1>** Nothing to submit **</h1></body></html>");
-    }
-    else if (name === "kill bill") {
-        res.writeHead(200, {"Content-Type": "text/html"});
-        res.write("*** Bill was here and KILLED this webserver ***<br>");
-        res.end(); 
-        console.log("*** webserver stopped ***");
-        process.exit();    
-    }
-    else {
-        res.writeHead(200, {"Content-Type": "text/html"});    
-        res.write("<html><body><h2>" + name + " has been submitted</h2></body></html>");
-        res.write("<a href='javascript:history.back()'>Back</a>");
-        res.end();
-        logger.log({
-            level: 'info',
-            message: name, vIp, vHost 
-          });    }
-    res.end();
+   //    console.log("*** Submitting ***")
+   var name = req.body.firstName + ' ' + req.body.lastName;
+   if (name === " ") {
+      res.write("<html><body><h1>** Nothing to submit **</h1></body></html>");
+   }
+   else if (name === "kill bill") {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write("*** Bill was here and KILLED this webserver ***<br>");
+      console.log("*** webserver stopped ***");
+      process.exit();
+   }
+   else {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write("<html><body><h2>" + name + " has been submitted</h2></body></html>");
+      res.write("<a href='javascript:history.back()'>Back</a>");
+      logger.log({
+         level: 'info',
+         message: name, vIp, vHost
+      });
+   }
+   res.end();
 });
 
 app.listen(3000);
