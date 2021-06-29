@@ -30,7 +30,7 @@ spec:
   selector:
     run: webapp
   ports:
-  - name: http
+  - name: http-webapp
     protocol: TCP
     port: 3000
     targetPort: 3000
