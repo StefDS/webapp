@@ -16,6 +16,9 @@ spec:
       containers:
         - name: webapp
           image: stefds/webapp
+          ports:
+            - containerPort: 8080
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service
