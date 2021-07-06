@@ -4,7 +4,10 @@
 			"path": "."
 		},
 		{
-			"path": "../webapp", "../grommetapp"
+			"path": "../webapp", 
+		},
+		{
+			"path": "../grommetapp", 
 		}
 	],
 	"settings": {}
