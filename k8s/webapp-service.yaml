@@ -8,7 +8,7 @@ spec:
   selector:
     run: webapp
   ports:
-  - name: webapp
+  - name: http-webapp
     protocol: TCP
     port: 8088
     targetPort: 3000
