@@ -1,2 +1,9 @@
-private/webapp.log
-private/webapp.json
+# Logs
+logs
+*.log
+webapp.log*
+
+# JSON
+JSON
+*.json
+webapp.json*
