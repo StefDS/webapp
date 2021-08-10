@@ -1,59 +1,59 @@
 {
-    "apiVersion": "kubedirector.hpe.com/v1beta1",
-    "kind": "KubeDirectorApp",
-    "metadata": {
-      "name": "dis1"
+  "apiVersion": "kubedirector.hpe.com/v1beta1",
+  "kind": "KubeDirectorApp",
+  "metadata": {
+    "name": "dis1"
+  },
+  "spec": {
+    "label": {
+      "name": "kb-webapp",
+      "description": "KubeDirector Custom WebApp"
     },
-    "spec": {
-      "label": {
-        "name": "kb-webapp",
-        "description": "KubeDirector Custom WebApp"
-      },
-      "distroID": "dis1",
-      "version": "1.0",
-      "configSchemaVersion": 8,
-      "config": {
-        "roleServices": [
-          {
-            "roleID": "webRole1",
-            "serviceIDs": [
-              "webui"
-            ]
-          }
-        ],
-        "selectedRoles": [
-          "webRole1"
-        ]
-      },
-      "services": [
+    "distroID": "dis1",
+    "version": "1.0",
+    "configSchemaVersion": 8,
+    "config": {
+      "roleServices": [
         {
-          "id": "webui",
-          "label": {
-            "name": "WebUI"
-          },
-          "endpoint": {
-            "port": 8090,
-            "isDashboard": false,
-            "hasAuthToken": false
-          }
+          "roleID": "webRole1",
+          "serviceIDs": [
+            "webui"
+          ]
         }
       ],
-      "roles": [
-        {
-          "id": "webRole1",
-          "cardinality": "1+",
-          "minResources": {
-            "memory": "100Mi",
-            "cpu": "1"
-          }
+      "selectedRoles": [
+        "webRole1"
+      ]
+    },
+    "services": [
+      {
+        "id": "webui",
+        "label": {
+          "name": "WebUI"
+        },
+        "endpoint": {
+          "port": 8090,
+          "isDashboard": true,
+          "hasAuthToken": false
         }
-      ],
-      "defaultImageRepoTag": "stefds/webapp:latest",
-      "defaultPersistDirs": [
-        "/home"
-      ],
-      "capabilities": [],
-      "systemdRequired": false,
-      "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/kd-webapp.png"
-    }
+      }
+    ],
+    "roles": [
+      {
+        "id": "webRole1",
+        "cardinality": "1+",
+        "minResources": {
+          "memory": "100Mi",
+          "cpu": "1"
+        }
+      }
+    ],
+    "defaultImageRepoTag": "stefds/webapp:latest",
+    "defaultPersistDirs": [
+      "/home"
+    ],
+    "capabilities": [],
+    "systemdRequired": false,
+    "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/kd-webapp.png"
   }
+}
