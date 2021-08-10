@@ -26,7 +26,7 @@ COPY ./private/webapp.json ./private/webapp.json
 COPY ./public/images/logo.jpg /public/images/logo.jpg
 
 # Expose http port
-EXPOSE 3000
+EXPOSE 8090
 
 # Start & Run the NodeJS pp
 CMD ["node", "index.js"]
