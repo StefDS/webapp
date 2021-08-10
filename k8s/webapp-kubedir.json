@@ -1,0 +1,54 @@
+{
+    "apiVersion": "kubedirector.hpe.com/v1beta1",
+    "kind": "KubeDirectorApp",
+    "metadata": {
+        "name" : "Kube-WebApp"
+    },
+
+    
+    "spec" : {
+        "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/kd-webapp.png",
+        "systemdRequired": true,
+        "defaultPersistDirs" : ["/home"],
+        "config": {
+            "roleServices": [
+                {
+                    "serviceIDs": [
+                        "http"
+                    ],
+                    "roleID": "controller"
+                }
+            ],
+            "selectedRoles": [
+                "controller"
+            ]
+        },
+        "label": {
+            "name": "WebApp server",
+            "description": "StefDS Custom WebApp"
+        },
+        "distroID": "docker.io/stefds/webapp",
+        "version": "latest",
+        "configSchemaVersion": 8,
+        "services": [
+            {
+                "endpoint": {
+                    "port": 8090,
+                    "isDashboard": true,
+                    "urlScheme" : "http"
+                },
+                "id": "webapp",
+                "label": {
+                    "name": "StefDS sample WebApp server"
+                }
+            }
+        ],
+        "defaultImageRepoTag": "stefds/webapp:latest",
+        "roles": [
+            {
+                "cardinality": "1+",
+                "id": "controller"
+            }
+        ]
+    }
+}

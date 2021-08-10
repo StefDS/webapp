@@ -5,5 +5,4 @@ private/webapp.log
 
 # JSON
 json
-*.json
 private/webapp.json
