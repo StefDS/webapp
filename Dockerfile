@@ -22,7 +22,7 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-COPY ./private/webapp.json ./private/webapp.json
+# COPY ./private/webapp.json ./private/webapp.json
 COPY ./public/images/logo.jpg /public/images/logo.jpg
 
 # Expose http port
