@@ -1,9 +1,10 @@
 ---
-apiVersion: kubedirector.hpe.com/v1beta1
-kind: KubeDirectorApp
+apiVersion: "kubedirector.hpe.com/v1beta1"
+kind: "KubeDirectorApp"
 metadata:
-  name: webapp-kubedir
+  name: "webapp-kubedir"
 spec:
+  app: "webapp"
   systemdRequired: true
   defaultPersistDirs:
   - "/usr/src/app/data"
@@ -20,7 +21,7 @@ spec:
     - webapp-kubedir
   label:
     name: webapp-kubedir
-    description: StefDS Statefull application example  
+    description: WebApp Statefull Appliction example  
   defaultImageRepoTag: docker.io/stefds/webapp:latest
   defaultConfigPackage: 
   distroID: stefds/webapp
@@ -28,8 +29,8 @@ spec:
   configSchemaVersion: 7
   services:
   - endpoint:
-      port: 3000
-      isDashboard: false
+      port: 8090
+      isDashboard: true
     id: http
     label:
       name: HTTP
