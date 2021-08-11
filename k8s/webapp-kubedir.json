@@ -1,60 +1,75 @@
 {
-    "apiVersion": "kubedirector.hpe.com/v1beta1",
-    "kind": "KubeDirectorApp",
-    "metadata": {
-      "name": "kd-webapp"
+  "apiVersion": "kubedirector.hpe.com/v1beta1",
+  "kind": "KubeDirectorApp",
+  "metadata": {
+    "name": "kd-webapp"
+  },
+  "spec": {
+    "label": {
+      "name": "sds-statefull-webapp",
+      "description": "StefDS sample KubeDirector App"
     },
-    "spec": {
-      "label": {
-        "name": "statefull-webapp",
-        "description": "StefDS sample KubeDirector App"
-      },
-      "distroID": "kd-webapp",
-      "version": "1.0",
-      "configSchemaVersion": 8,
-      "config": {
-        "roleServices": [
-          {
-            "roleID": "webappRole",
-            "serviceIDs": [
-              "webappui"
-            ]
-          }
-        ],
-        "selectedRoles": [
-          "webappRole"
-        ]
-      },
-      "services": [
+    "distroID": "kd-webapp",
+    "version": "1.0",
+    "configSchemaVersion": 8,
+    "config": {
+      "roleServices": [
         {
-          "id": "webappui",
-          "label": {
-            "name": "WebappUI"
-          },
-          "endpoint": {
-            "port": 8090,
-            "isDashboard": true,
-            "hasAuthToken": false,
-            "urlScheme": "http"
-          }
+          "roleID": "webappRole-low",
+          "serviceIDs": [
+            "webappui"
+          ]
+        },
+        {
+          "roleID": "webappRole-high",
+          "serviceIDs": [
+            "webappui"
+          ]
         }
       ],
-      "roles": [
-        {
-          "id": "webappRole",
-          "cardinality": "1+",
-          "minResources": {
-            "memory": "100Mi",
-            "cpu": "1"
-          }
+      "selectedRoles": [
+        "webappRole-low",
+        "webappRole-high"
+      ]
+    },
+    "services": [
+      {
+        "id": "webappui",
+        "label": {
+          "name": "WebappUI"
+        },
+        "endpoint": {
+          "port": 8090,
+          "isDashboard": true,
+          "hasAuthToken": false,
+          "urlScheme": "http"
         }
-      ],
-      "defaultImageRepoTag": "docker.io/stefds/webapp",
-      "defaultPersistDirs": [
-        "/usr/src/app/private"
-      ],
-      "capabilities": [],
-      "systemdRequired": false,
-      "logoURL": "https://raw.githubusercontent.com/bluedatainc/solutions/master/MLOps/logos/cassandra-3.11.png"
-    }
+      }
+    ],
+    "roles": [
+      {
+        "id": "webappRole-low",
+        "cardinality": "1+",
+        "minResources": {
+          "memory": "100Mi",
+          "cpu": "1"
+        }
+      },
+      {
+        "id": "webappRole-high",
+        "cardinality": "1+",
+        "minResources": {
+          "memory": "200Mi",
+          "cpu": "2"
+        }
+      }
+    ],
+    "defaultImageRepoTag": "docker.io/stefds/webapp",
+    "defaultPersistDirs": [
+      "/usr/src/app/private"
+    ],
+    "capabilities": [],
+    "systemdRequired": false,
+    "logoURL": "https://raw.githubusercontent.com/bluedatainc/solutions/master/MLOps/logos/cassandra-3.11.png"
   }
+}
