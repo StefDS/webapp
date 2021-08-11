@@ -24,6 +24,7 @@ RUN npm install
 COPY . .
 # COPY ./private/webapp.json ./private/webapp.json
 COPY ./public/images/logo.jpg /public/images/logo.jpg
+COPY ./private/webapp.json /private/webapp.json
 
 # Expose http port
 EXPOSE 8090

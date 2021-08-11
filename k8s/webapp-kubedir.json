@@ -2,58 +2,53 @@
   "apiVersion": "kubedirector.hpe.com/v1beta1",
   "kind": "KubeDirectorApp",
   "metadata": {
-    "name": "dis1"
+      "name" : "kd-webapp"
   },
-  "spec": {
-    "label": {
-      "name": "kb-webapp",
-      "description": "KubeDirector Custom WebApp"
-    },
-    "distroID": "dis1",
-    "version": "1.0",
-    "configSchemaVersion": 8,
-    "config": {
-      "roleServices": [
-        {
-          "roleID": "webRole1",
-          "serviceIDs": [
-            "webui"
+
+  
+  "spec" : {
+      "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/kd-webapp.png",
+      "systemdRequired": true,
+      "defaultPersistDirs" : ["/home", "/usr/src/app/private"],
+      "config": {
+          "roleServices": [
+              {
+                  "serviceIDs": [
+                      "webapp"
+                  ],
+                  "roleID": "webappRole"
+              }
+          ],
+          "selectedRoles": [
+              "webappRole"
           ]
-        }
+      },
+      "label": {
+          "name": "WebApp server",
+          "description": "StefDS Statefull WebApp"
+      },
+      "distroID": "docker.io/stefds/webapp",
+      "version": "latest",
+      "configSchemaVersion": 8,
+      "services": [
+          {
+              "endpoint": {
+                  "port": 8090,
+                  "isDashboard": true,
+                  "urlScheme" : "http"
+              },
+              "id": "webapp",
+              "label": {
+                  "name": "StefDS sample WebApp server"
+              }
+          }
       ],
-      "selectedRoles": [
-        "webRole1"
+      "defaultImageRepoTag": "stefds/webapp:latest",
+      "roles": [
+          {
+              "cardinality": "1+",
+              "id": "webappRole"
+          }
       ]
-    },
-    "services": [
-      {
-        "id": "webui",
-        "label": {
-          "name": "WebUI"
-        },
-        "endpoint": {
-          "port": 8090,
-          "isDashboard": true,
-          "hasAuthToken": false
-        }
-      }
-    ],
-    "roles": [
-      {
-        "id": "webRole1",
-        "cardinality": "1+",
-        "minResources": {
-          "memory": "100Mi",
-          "cpu": "1"
-        }
-      }
-    ],
-    "defaultImageRepoTag": "stefds/webapp:latest",
-    "defaultPersistDirs": [
-      "/home"
-    ],
-    "capabilities": [],
-    "systemdRequired": false,
-    "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/kd-webapp.png"
   }
 }
