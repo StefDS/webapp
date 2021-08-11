@@ -1,54 +1,60 @@
 {
-  "apiVersion": "kubedirector.hpe.com/v1beta1",
-  "kind": "KubeDirectorApp",
-  "metadata": {
-      "name" : "statefull-webapp"
-  },
-
-  
-  "spec" : {
-      "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/nodejs-webapp.png",
-      "systemdRequired": true,
-      "defaultPersistDirs" : ["/usr/src/app/private"],
-      "config": {
-          "roleServices": [
-              {
-                  "serviceIDs": [
-                      "webapp"
-                  ],
-                  "roleID": "webappRole"
-              }
-          ],
-          "selectedRoles": [
-              "webappRole"
-          ]
-      },
+    "apiVersion": "kubedirector.hpe.com/v1beta1",
+    "kind": "KubeDirectorApp",
+    "metadata": {
+      "name": "kd-webapp"
+    },
+    "spec": {
       "label": {
-          "name": "WebApp server",
-          "description": "StefDS Statefull WebApp"
+        "name": "statefull-webapp",
+        "description": "StefDS sample KubeDirector App"
       },
-      "distroID": "docker.io/stefds/webapp",
-      "version": "latest",
+      "distroID": "kd-webapp",
+      "version": "1.0",
       "configSchemaVersion": 8,
+      "config": {
+        "roleServices": [
+          {
+            "roleID": "webappRole",
+            "serviceIDs": [
+              "webappui"
+            ]
+          }
+        ],
+        "selectedRoles": [
+          "webappRole"
+        ]
+      },
       "services": [
-          {
-              "endpoint": {
-                  "port": 8090,
-                  "isDashboard": true,
-                  "urlScheme" : "http"
-              },
-              "id": "webapp",
-              "label": {
-                  "name": "StefDS sample WebApp server"
-              }
+        {
+          "id": "webappui",
+          "label": {
+            "name": "WebappUI"
+          },
+          "endpoint": {
+            "port": 8090,
+            "isDashboard": true,
+            "hasAuthToken": false,
+            "urlScheme": "http"
           }
+        }
       ],
-      "defaultImageRepoTag": "stefds/webapp:latest",
       "roles": [
-          {
-              "cardinality": "1+",
-              "id": "webappRole"
+        {
+          "id": "webappRole",
+          "cardinality": "1+",
+          "minResources": {
+            "memory": "100Mi",
+            "cpu": "1"
           }
-      ]
+        }
+      ],
+      "defaultImageRepoTag": "docker.io/stefds/webapp",
+      "defaultPersistDirs": [
+        "/usr/src/app/private"
+      ],
+      "capabilities": [],
+      "systemdRequired": false,
+      "logoURL": "https://raw.githubusercontent.com/bluedatainc/solutions/master/MLOps/logos/cassandra-3.11.png"
+    }
   }
-}
