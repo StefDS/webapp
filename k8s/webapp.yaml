@@ -17,7 +17,7 @@ spec:
         - name: webapp
           image: stefds/webapp
           ports:
-            - containerPort: 8080
+            - containerPort: 8090
               protocol: TCP
 ---
 apiVersion: v1
@@ -32,6 +32,6 @@ spec:
   ports:
   - name: http-webapp
     protocol: TCP
-    port: 3000
+    port: 8090
     targetPort: 3000
   type: NodePort
