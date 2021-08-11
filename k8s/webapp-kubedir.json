@@ -2,14 +2,14 @@
   "apiVersion": "kubedirector.hpe.com/v1beta1",
   "kind": "KubeDirectorApp",
   "metadata": {
-      "name" : "kd-webapp"
+      "name" : "statefull-webapp"
   },
 
   
   "spec" : {
-      "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/kd-webapp.png",
+      "logoURL": "https://github.com/StefDS/webapp/raw/bf2ae657572fefdcb704814831873fddfe9ff9e9/public/images/nodejs-webapp.png",
       "systemdRequired": true,
-      "defaultPersistDirs" : ["/home", "/usr/src/app/private"],
+      "defaultPersistDirs" : ["/usr/src/app/private"],
       "config": {
           "roleServices": [
               {
