@@ -32,6 +32,6 @@ spec:
   ports:
   - name: http-webapp
     protocol: TCP
-    port: 8090
-    targetPort: 3000
+    port: 3000
+    targetPort: 8090
   type: NodePort
