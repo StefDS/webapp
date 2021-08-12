@@ -2,34 +2,27 @@
   "apiVersion": "kubedirector.hpe.com/v1beta1",
   "kind": "KubeDirectorApp",
   "metadata": {
-    "name": "kd-webapp"
+    "name": "stefds-webapp"
   },
   "spec": {
     "label": {
       "name": "sds-statefull-webapp",
-      "description": "StefDS sample KubeDirector App"
+      "description": "StefDS sample KubeDirector WebApp"
     },
-    "distroID": "kd-webapp",
+    "distroID": "stefds/webapp",
     "version": "1.0",
     "configSchemaVersion": 8,
     "config": {
       "roleServices": [
         {
-          "roleID": "webappRole-low",
-          "serviceIDs": [
-            "webappui"
-          ]
-        },
-        {
-          "roleID": "webappRole-high",
+          "roleID": "webappRole",
           "serviceIDs": [
             "webappui"
           ]
         }
       ],
       "selectedRoles": [
-        "webappRole-low",
-        "webappRole-high"
+        "webappRole"
       ]
     },
     "services": [
@@ -48,19 +41,11 @@
     ],
     "roles": [
       {
-        "id": "webappRole-low",
+        "id": "webappRole",
         "cardinality": "1+",
         "minResources": {
           "memory": "100Mi",
           "cpu": "1"
-        }
-      },
-      {
-        "id": "webappRole-high",
-        "cardinality": "1+",
-        "minResources": {
-          "memory": "200Mi",
-          "cpu": "2"
         }
       }
     ],
