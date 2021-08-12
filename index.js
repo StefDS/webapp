@@ -70,10 +70,10 @@ app.get('/test', function (req, res) {
    vCounter = appModules.getcounter(vHost);
    res.writeHead(200, { "Content-Type": "text/html" });
    res.write("<html><body><img src='/images/logo.jpg' width='325' height='150'>");
-   res.write("<h3>AI WebApp in Action - 2021 edition</h3>");
+   res.write("<h3>SDS WebApp in Action - 2021 edition</h3>");
+   res.write("<b>        Counter: " + vCounter + "</b><br>");
    res.write("      Node Name: " + vHost + "<br>");
    res.write("   Node Address: " + vIp + "<br>");
-   res.write("        Counter: " + vCounter + "<br>");
    res.write("    Time is now: " + Date().toString() + "</body></html>");
    res.end();
 });

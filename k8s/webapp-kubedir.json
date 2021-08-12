@@ -42,7 +42,7 @@
     "roles": [
       {
         "id": "webappRole",
-        "cardinality": "1+",
+        "cardinality": "2+",
         "minResources": {
           "memory": "100Mi",
           "cpu": "1"
