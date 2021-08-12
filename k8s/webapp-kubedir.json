@@ -70,6 +70,6 @@
     ],
     "capabilities": [],
     "systemdRequired": false,
-    "logoURL": "https://raw.githubusercontent.com/bluedatainc/solutions/master/MLOps/logos/cassandra-3.11.png"
+    "logoURL": "https://raw.githubusercontent.com/StefDS/webapp/master/public/images/nodejs-webapp.png"
   }
 }
