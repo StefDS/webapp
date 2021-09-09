@@ -4,4 +4,4 @@ It's mainly used to demonstrate container deployments on HPE Ezmeral Container P
 - [**webapp.yaml**](https://github.com/StefDS/webapp/blob/master/k8s/webapp.yaml) for POD container deployment & stateless service endpoints definitions
 - [**webapp-kubedir.json**](https://github.com/StefDS/webapp/blob/master/k8s/webapp-kubedir.json) to show the deployment of statefull applications using [KubeDirector](https://github.com/bluek8s/kubedirector)
 
-More info in the [HPE Ezmeral Container Platforms Docs](https://docs.containerplatform.hpe.com/home)
+More info in the [HPE Ezmeral Container Platform docs](https://docs.containerplatform.hpe.com/home)
