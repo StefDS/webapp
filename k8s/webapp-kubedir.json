@@ -6,7 +6,7 @@
   },
   "spec": {
     "label": {
-      "name": "sds-statefull-webapp",
+      "name": "SDS Statefull WebApp",
       "description": "StefDS sample KubeDirector WebApp"
     },
     "distroID": "stefds/webapp",
