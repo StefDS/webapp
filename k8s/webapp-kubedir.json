@@ -50,9 +50,7 @@
       }
     ],
     "defaultImageRepoTag": "docker.io/stefds/webapp",
-    "defaultPersistDirs": [
-      "/usr/src/app/private"
-    ],
+    "defaultPersistDirs": [ "/usr/src/app/private" ],
     "capabilities": [],
     "systemdRequired": false,
     "logoURL": "https://raw.githubusercontent.com/StefDS/webapp/master/public/images/nodejs-webapp.png"
