@@ -6,7 +6,7 @@
   },
   "spec": {
     "label": {
-      "name": "sds-statefull-webapp",
+      "name": "SDS Statefull WebApp",
       "description": "StefDS sample KubeDirector WebApp"
     },
     "distroID": "stefds/webapp",
@@ -50,9 +50,7 @@
       }
     ],
     "defaultImageRepoTag": "docker.io/stefds/webapp",
-    "defaultPersistDirs": [
-      "/usr/src/app/private"
-    ],
+    "defaultPersistDirs": ["/usr/src/app/private"],
     "capabilities": [],
     "systemdRequired": false,
     "logoURL": "https://raw.githubusercontent.com/StefDS/webapp/master/public/images/nodejs-webapp.png"
