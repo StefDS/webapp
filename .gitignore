@@ -1,8 +1,5 @@
 # Logs
-logs
 *.log
-private/webapp.log
 
 # JSON
-json
-private/webapp.json
+*.json
