@@ -3,3 +3,6 @@
 
 # JSON
 *.json
+
+private/webapp.json
+private/webapp.log
