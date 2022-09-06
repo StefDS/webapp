@@ -64,7 +64,7 @@ app.get('/test', function (req, res) {
    vCounter = appModules.getcounter(vHost);
    res.writeHead(200, { "Content-Type": "text/html" });
    res.write("<html><body><a href='/'><img src='/images/logo.jpg' width='325' height='150'></a>");
-   res.write("<h3>SDS WebApp in Action - 2021 edition</h3>");
+   res.write("<h3>SDS WebApp in Action - 2022 edition</h3>");
    res.write("<b>        Counter: " + vCounter + "</b><br>");
    res.write("      Node Name: " + vHost + "<br>");
    res.write("   Node Address: " + vIp + "<br>");
