@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 # A wildcard is used to ensure both package.js
-on AND package-lock.json are copied
+# on AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
 
