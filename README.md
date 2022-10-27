@@ -1,4 +1,5 @@
-# HPE GreenLake for Containers (Powerd by HPE Ezmeral Runtime) - WebApp example
+# HPE GreenLake for Containers - WebApp example
+## (Powered by HPE Ezmeral Runtime) 
 Sample NodeJS app based on the Express web application framework that provides a robust set of features for web and mobile applications.
 It's mainly used to demonstrate container deployments on HPE Ezmeral Runtime running both stateless & statefull applications.   Use the following files for K8s setup: <br>
 - [**webapp.yaml**](https://github.com/StefDS/webapp/blob/master/k8s/webapp.yaml) for POD deployment & stateless service endpoint definitions in native K8s.
