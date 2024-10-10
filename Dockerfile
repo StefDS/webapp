@@ -30,5 +30,7 @@ COPY ./private/webapp.json /private/webapp.json
 # Expose http port
 EXPOSE 8090
 
+HEALTHCHECK --interval=5s  CMD curl --fail http://localhost:8089 || exit 1
+
 # Start & Run the NodeJS pp
 CMD ["node", "index.js"]
