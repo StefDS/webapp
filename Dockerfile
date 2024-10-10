@@ -18,6 +18,7 @@ COPY package*.json ./
 
 # install all dependencies as defined is package.json
 RUN npm install
+RUN apt-get -y install curl
 # If you are building your code for production
 # RUN npm install --only=production
 
@@ -30,7 +31,7 @@ COPY ./private/webapp.json /private/webapp.json
 # Expose http port
 EXPOSE 8090
 
-HEALTHCHECK --interval=5s  CMD curl --fail http://localhost:8090 || exit 1
+HEALTHCHECK --interval=5s  CMD curl --fail http://127.0.0.1:8090 || exit 1
 
 # Start & Run the NodeJS pp
 CMD ["node", "index.js"]
